@@ -1,15 +1,16 @@
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import React from "react";
-import App from "./App";
 import { Dialog } from "./components/ui/dialog";
 import { Toaster } from "./components/ui/toaster";
+import { App } from "./App";
+import { StrictMode } from "react";
+
+import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+  <StrictMode>
     <Dialog>
       <App />
     </Dialog>
     <Toaster />
-  </React.StrictMode>
+  </StrictMode>
 );

@@ -1,31 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "./ui/button";
+import { Button } from "../components/ui/button";
 import { LogIn } from "lucide-react";
 import authIllustration from "../assets/auth.svg";
+import { useAuth } from "@/context/AuthContext";
 
 export function GoogleLogin() {
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const checkAuthStatus = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/auth/status", {
-          method: "GET",
-          credentials: "include",
-        });
-
-        const data = await response.json();
-        if (data.isLoggedIn) {
-          navigate("/home");
-        }
-      } catch (error) {
-        console.error("Error checking auth status:", error);
-      }
-    };
-
-    checkAuthStatus();
-  }, [navigate]);
+    if (isAuthenticated) navigate("/home");
+  }, [isAuthenticated, navigate]);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen gap-8">
@@ -40,7 +26,7 @@ export function GoogleLogin() {
         }}
       >
         <LogIn className="size-4" />
-        Log in
+        Log in with Google
       </Button>
     </div>
   );

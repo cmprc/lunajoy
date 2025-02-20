@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { EmptyPage } from "./empty-page";
-import { Dashboard } from "./dashboard";
-import { DailyLogForm } from "./daily-log-form";
+import { EmptyPage } from "../components/empty-page";
 import { getLogs } from "@/http/get-logs";
-import { Header } from "./header";
+import { Header } from "@/components/header";
+import { Dashboard } from "@/components/dashboard";
+import { CreateLog } from "@/components/create-log";
 
 interface Log {
   date: string;
@@ -26,16 +26,17 @@ export const Home = () => {
   if (!logs) return null;
 
   return (
-    <div className="h-screen dark">
+    <div className="dark">
       <Header />
 
-      <div className="p-4 max-w-screen-lg mx-auto">
+      <div className="px-4 max-w-screen-lg mx-auto">
         {logs.length === 0 ? (
           <EmptyPage />
         ) : (
           <Dashboard logs={logs} average={result} />
         )}
-        <DailyLogForm />
+
+        <CreateLog />
       </div>
     </div>
   );

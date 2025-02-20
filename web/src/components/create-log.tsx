@@ -30,7 +30,7 @@ const createLogSchema = z.object({
 
 type CreateLogProps = z.infer<typeof createLogSchema>;
 
-export const DailyLogForm = () => {
+export const CreateLog = () => {
   const dialogCloseRef = useRef<HTMLButtonElement>(null);
   const { toast } = useToast();
 
