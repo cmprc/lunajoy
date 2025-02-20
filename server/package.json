@@ -1,0 +1,43 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch --env-file .env src/http/server.ts",
+    "seed": "tsx --env-file .env src/db/seed.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@biomejs/biome": "1.9.0",
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/bun": "^1.2.2",
+    "@types/node": "^22.5.4",
+    "@types/passport-google-oauth20": "^2.0.16",
+    "drizzle-kit": "^0.24.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^11.0.2",
+    "@fastify/cors": "^10.0.2",
+    "@fastify/passport": "^3.0.2",
+    "@fastify/session": "^11.1.0",
+    "@libsql/client": "^0.14.0",
+    "@paralleldrive/cuid2": "^2.2.2",
+    "better-sqlite3": "^11.8.1",
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.33.0",
+    "express-session": "^1.18.1",
+    "fastify": "^5.2.1",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "postgres": "^3.4.4",
+    "sqlite3": "^5.1.7",
+    "ws": "^8.18.0",
+    "zod": "^3.23.8"
+  }
+}
