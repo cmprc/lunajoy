@@ -4,6 +4,7 @@ import { calculateMentalHealthScore } from "./calculate-score";
 
 interface createDailyLogProps {
   mood: number;
+  date: string;
   anxietyLevel: number;
   sleepHours: number;
   physicalActivity: number;
@@ -12,9 +13,10 @@ interface createDailyLogProps {
   symptom: string;
 }
 
-export async function createDailyLog(
+export async function createLog(
   {
     mood,
+    date,
     anxietyLevel,
     sleepHours,
     physicalActivity,
@@ -24,8 +26,6 @@ export async function createDailyLog(
   }: createDailyLogProps,
   userId: string
 ) {
-  const date = new Date().toISOString().split("T")[0];
-
   const score = calculateMentalHealthScore({
     mood,
     anxietyLevel,

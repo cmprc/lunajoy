@@ -1,6 +1,7 @@
 interface createLogProps {
   symptom: string;
   mood: number;
+  date: Date;
   anxietyLevel: number;
   sleepHours: number;
   physicalActivity: number;
@@ -10,6 +11,7 @@ interface createLogProps {
 
 export async function createLog({
   symptom,
+  date,
   mood,
   anxietyLevel,
   sleepHours,
@@ -25,6 +27,7 @@ export async function createLog({
     },
     body: JSON.stringify({
       symptom,
+      date,
       mood,
       anxietyLevel,
       sleepHours,

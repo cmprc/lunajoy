@@ -1,18 +1,16 @@
-import fastify, { FastifyPluginAsync, PassportUser } from "fastify";
+import { FastifyPluginAsync, PassportUser } from "fastify";
 import z from "zod";
-import { createDailyLog } from "../../features/create-daily-log";
+import { createLog } from "../../features/create-log";
 
 interface User extends PassportUser {
   id: string;
 }
 
-export const CreateDailyLogRoute: FastifyPluginAsync = async (
-  fastify,
-  options
-) => {
+export const CreateLogRoute: FastifyPluginAsync = async (fastify, options) => {
   fastify.post("/log", async (req, reply) => {
     const createDailyLogSchema = z.object({
       mood: z.number().min(1).max(10),
+      date: z.string(),
       anxietyLevel: z.number().min(1).max(10),
       sleepHours: z.number().min(1).max(24),
       physicalActivity: z.number().min(1).max(10),
@@ -28,7 +26,7 @@ export const CreateDailyLogRoute: FastifyPluginAsync = async (
       return reply.status(401).send({ success: false, error: "Unauthorized" });
     }
 
-    const dailyLog = await createDailyLog(data, userId);
+    const dailyLog = await createLog(data, userId);
     reply.send({ success: true });
   });
 };

@@ -1,5 +1,5 @@
 import { FastifyPluginAsync, PassportUser } from "fastify";
-import { getDailyLogs } from "../../features/get-daily-logs";
+import { getDailyLogs } from "../../features/get-logs";
 
 interface User extends PassportUser {
   id: string;

@@ -10,7 +10,7 @@ import { users } from "../db/schema";
 import { eq } from "drizzle-orm";
 import "dotenv/config";
 import { GoogleAuthRoute } from "./routes/google-auth";
-import { CreateDailyLogRoute } from "./routes/create-daily-log";
+import { CreateLogRoute } from "./routes/create-log";
 import { GetLogsRoute } from "./routes/get-logs";
 
 const app = fastify();
@@ -81,7 +81,7 @@ passport.registerUserDeserializer(async (userId: string, req) => {
 app.register(websocket);
 
 app.register(GoogleAuthRoute);
-app.register(CreateDailyLogRoute);
+app.register(CreateLogRoute);
 app.register(GetLogsRoute);
 
 app.listen({ port: 3000 }).then(() => {
