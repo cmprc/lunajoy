@@ -76,7 +76,7 @@ cd lunajoy
 2. **Frontend Setup**
 
 ```bash
-cd frontend
+cd web
 npm install
 npm run dev
 ```
@@ -84,9 +84,9 @@ npm run dev
 3. **Backend Setup**
 
 ```bash
-cd backend
+cd server
 npm install
-npm start
+npm run dev
 ```
 
 ---
