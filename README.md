@@ -69,8 +69,8 @@ Users can submit their daily mental health status through a comprehensive form t
 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/your-repo/mental-health-tracker.git
-cd mental-health-tracker
+git clone https://github.com/cmprc/lunajoy.git
+cd lunajoy
 ```
 
 2. **Frontend Setup**
