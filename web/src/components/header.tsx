@@ -1,4 +1,4 @@
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context/auth-context";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { BrainCog } from "lucide-react";

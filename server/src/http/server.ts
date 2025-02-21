@@ -1,9 +1,9 @@
-// server.ts
 import fastify from "fastify";
 import cors from "@fastify/cors";
 import session from "@fastify/session";
 import cookie from "@fastify/cookie";
 import passport from "@fastify/passport";
+import websocket from "@fastify/websocket";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { db } from "../db";
 import { users } from "../db/schema";
@@ -11,7 +11,7 @@ import { eq } from "drizzle-orm";
 import "dotenv/config";
 import { GoogleAuthRoute } from "./routes/google-auth";
 import { CreateDailyLogRoute } from "./routes/create-daily-log";
-import { GetDailyLogsRoute } from "./routes/get-daily-logs";
+import { GetLogsRoute } from "./routes/get-logs";
 
 const app = fastify();
 
@@ -78,9 +78,11 @@ passport.registerUserDeserializer(async (userId: string, req) => {
   return user;
 });
 
+app.register(websocket);
+
 app.register(GoogleAuthRoute);
 app.register(CreateDailyLogRoute);
-app.register(GetDailyLogsRoute);
+app.register(GetLogsRoute);
 
 app.listen({ port: 3000 }).then(() => {
   console.log("HTTP Server running on http://localhost:3000");

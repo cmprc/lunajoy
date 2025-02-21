@@ -30,7 +30,7 @@ const createLogSchema = z.object({
 
 type CreateLogProps = z.infer<typeof createLogSchema>;
 
-export const CreateLog = () => {
+export const CreateLog = ({ refreshLogs }: { refreshLogs: () => void }) => {
   const dialogCloseRef = useRef<HTMLButtonElement>(null);
   const { toast } = useToast();
 
@@ -61,6 +61,8 @@ export const CreateLog = () => {
       description: "Log created successfully.",
     });
 
+    await refreshLogs();
+
     reset();
     dialogCloseRef.current?.click();
   }
@@ -85,8 +87,18 @@ export const CreateLog = () => {
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-4">
             <Label htmlFor="title">Symptom</Label>
-            <Input id="title" placeholder="Headache" {...register("symptom")} />
-            {errors.symptom && <span>{errors.symptom.message}</span>}
+            <div className="flex flex-col gap-1">
+              <Input
+                id="title"
+                placeholder="Headache"
+                {...register("symptom")}
+              />
+              {errors.symptom && (
+                <span className="text-red-700 text-xs">
+                  {errors.symptom.message}
+                </span>
+              )}
+            </div>
           </div>
           <div className="grid grid-cols-2 gap-8">
             <div className="flex flex-col gap-6">

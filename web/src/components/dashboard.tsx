@@ -17,12 +17,17 @@ import {
 } from "./ui/card";
 import { DialogTrigger } from "./ui/dialog";
 import { ChartComponent } from "./chart";
+import { PulseUpdate } from "./pulse-update";
 
-export function Dashboard({ logs, average }: any) {
+export function Dashboard({ logs, average, isConnected }: any) {
   return (
     <div className="flex flex-col gap-4 mt-4 mb-8">
       <div className="flex flex-col gap-1 mb-2">
-        <h1 className="text-3xl font-bold">Dashboard</h1>
+        <div className="flex items-center gap-6">
+          <h1 className="text-3xl font-bold">Dashboard</h1>
+          <PulseUpdate isConnected={isConnected} />
+        </div>
+
         <p className="text-zinc-400 text-sm">
           Here you can see a summary of your mental health over the last 7 days.
         </p>
