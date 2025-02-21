@@ -14,18 +14,6 @@ The frontend is built using **React**, combined with modern frameworks and libra
 
 ---
 
-## **Table of Contents**  
-- [Features](#-features)  
-- [Technologies Used](#-technologies-used)  
-- [Installation](#-installation)  
-- [Configuration](#-configuration)  
-- [Usage](#-usage)  
-- [Troubleshooting](#-troubleshooting)  
-- [Contributors](#-contributors)  
-- [License](#-license)  
-
----
-
 ## Features
 
 ### User Authentication
