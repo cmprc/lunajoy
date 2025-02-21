@@ -36,7 +36,6 @@
     "fastify": "^5.2.1",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
-    "postgres": "^3.4.4",
     "sqlite3": "^5.1.7",
     "ws": "^8.18.0",
     "zod": "^3.23.8"
