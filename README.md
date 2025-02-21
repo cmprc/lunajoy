@@ -1,9 +1,30 @@
-# Mental Health Tracker - Luna Joy
+# 🌙 Mental Health Tracker - Luna Joy
+
+✨ _Track, visualize, and understand your mental health journey._ ✨
+
+---
 
 ## Objective
 
 The **Mental Health Tracker** is a full-stack web application designed to help users monitor their daily mental health and visualize trends over time. With a user-centric design and an intuitive interface, the application makes it easy to log emotional and physical well-being metrics, promoting self-reflection and awareness of mental health patterns.
 The frontend is built using **React**, combined with modern frameworks and libraries to deliver a responsive and visually appealing experience. On the backend, **Node.js** powers the application, ensuring fast and reliable data processing, while a lightweight file-based database provides efficient data storage and retrieval. This seamless integration of technologies ensures a smooth and engaging user experience, empowering individuals to track their mental health journey with ease.
+
+🚀 **Frontend:** Built with **React** and modern frameworks for a responsive experience.  
+💾 **Backend:** Powered by **Node.js** and a lightweight file-based database for efficient data storage and retrieval.
+
+---
+
+## **Table of Contents**  
+- [Features](#-features)  
+- [Technologies Used](#-technologies-used)  
+- [Installation](#-installation)  
+- [Configuration](#-configuration)  
+- [Usage](#-usage)  
+- [Troubleshooting](#-troubleshooting)  
+- [Contributors](#-contributors)  
+- [License](#-license)  
+
+---
 
 ## Features
 
@@ -86,6 +107,13 @@ npm start
 
 - Environment variables such as API keys and database connections are defined in `.env` files for both the frontend and backend.
 - Ensure proper configuration of Google OAuth credentials for authentication.
+
+Example `.env` for backend:
+```env
+GOOGLE_CLIENT_ID=your-client-id
+GOOGLE_CLIENT_SECRET=your-client-secret
+DATABASE_URL=sqlite://data/mental-health.db
+```
 
 ---
 
