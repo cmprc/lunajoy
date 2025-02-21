@@ -10,7 +10,8 @@ interface Log {
 
 interface LogsContextType {
   logs: Log[];
-  result: number;
+  average: number;
+  total: number;
   isConnected: boolean;
   refreshLogs: () => Promise<void>;
 }
@@ -21,7 +22,8 @@ export const LogsProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [logs, setLogs] = useState<Log[]>([]);
-  const [result, setResult] = useState<number>(0);
+  const [average, setAverage] = useState<number>(0);
+  const [total, setTotal] = useState<number>(0);
   const [loading, setLoading] = useState(true);
 
   const { data: dailyLogs, isConnected } = useWebSocket(
@@ -31,8 +33,11 @@ export const LogsProvider: React.FC<{ children: React.ReactNode }> = ({
   const refreshLogs = async () => {
     try {
       const result = await getLogs();
+
       setLogs(result.logs);
-      setResult(result.average);
+      setAverage(result.average);
+      setTotal(result.total);
+
       setLoading(false);
     } catch (error) {
       console.error("Error fetching logs:", error);
@@ -44,14 +49,17 @@ export const LogsProvider: React.FC<{ children: React.ReactNode }> = ({
 
     if (isConnected && dailyLogs) {
       setLogs(dailyLogs.logs);
-      setResult(dailyLogs.average);
+      setAverage(dailyLogs.average);
+      setTotal(dailyLogs.total);
     }
   }, [isConnected, dailyLogs]);
 
   if (loading) return <Loader />;
 
   return (
-    <LogsContext.Provider value={{ logs, result, isConnected, refreshLogs }}>
+    <LogsContext.Provider
+      value={{ logs, average, total, isConnected, refreshLogs }}
+    >
       {children}
     </LogsContext.Provider>
   );

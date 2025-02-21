@@ -19,7 +19,7 @@ import { DialogTrigger } from "./ui/dialog";
 import { ChartComponent } from "./chart";
 import { PulseUpdate } from "./pulse-update";
 
-export function Dashboard({ logs, average, isConnected }: any) {
+export function Dashboard({ logs, average, total, isConnected }: any) {
   return (
     <div className="flex flex-col gap-4 mt-4 mb-8">
       <div className="flex flex-col gap-1 mb-2">
@@ -40,7 +40,7 @@ export function Dashboard({ logs, average, isConnected }: any) {
             <LogsIcon className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{"21"}</div>
+            <div className="text-2xl font-bold">{total || 0}</div>
           </CardContent>
         </Card>
         <Card>
@@ -85,8 +85,8 @@ export function Dashboard({ logs, average, isConnected }: any) {
         </CardContent>
         <CardFooter className="flex-col items-start gap-2 text-sm">
           <div className="flex gap-2 font-medium leading-none">
-            Average mental health score of {average / 10} out of 10 this week{" "}
-            <Brain className="h-4 w-4" />
+            Average mental health score of {(average / 10).toFixed(1)} out of 10
+            this week <Brain className="h-4 w-4" />
           </div>
           <div className="leading-none text-muted-foreground">
             Showing daily scores for the last 7 days

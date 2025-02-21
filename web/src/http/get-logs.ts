@@ -5,6 +5,7 @@ interface Log {
 
 type LogsResponse = {
   average: number;
+  total: number;
   logs: Log[];
 };
 

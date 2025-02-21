@@ -5,7 +5,7 @@ import { CreateLog } from "@/components/create-log";
 import { useLogs } from "@/context/logs-context";
 
 export const Home = () => {
-  const { logs, result, refreshLogs } = useLogs();
+  const { logs, average, total, refreshLogs } = useLogs();
   if (!logs) return null;
 
   return (
@@ -16,7 +16,12 @@ export const Home = () => {
         {logs.length === 0 ? (
           <EmptyPage />
         ) : (
-          <Dashboard logs={logs} average={result} isConnected={true} />
+          <Dashboard
+            logs={logs}
+            average={average}
+            total={total}
+            isConnected={true}
+          />
         )}
 
         <CreateLog refreshLogs={refreshLogs} />

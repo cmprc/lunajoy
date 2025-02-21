@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 interface DailyLogsResponse {
   logs: Log[];
   average: number;
+  total: number;
 }
 
 interface Log {

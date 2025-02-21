@@ -1,4 +1,4 @@
-import { and, avg, eq, lte } from "drizzle-orm";
+import { and, avg, count, eq, lte } from "drizzle-orm";
 import { db } from "../db";
 import { dailyLogs } from "../db/schema";
 import dayjs from "dayjs";
@@ -17,15 +17,19 @@ export async function getDailyLogs(userId: string) {
     )
     .groupBy(dailyLogs.date);
 
-  const average = await db
-    .select({ averageScore: avg(dailyLogs.score) })
+  const stats = await db
+    .select({
+      averageScore: avg(dailyLogs.score),
+      logCount: count(),
+    })
     .from(dailyLogs)
     .where(
       and(eq(dailyLogs.userId, userId), lte(dailyLogs.date, lastDayOfWeek))
     );
 
   return {
-    average: average[0].averageScore,
+    average: stats[0]?.averageScore || 0,
+    total: stats[0]?.logCount || 0,
     logs: await logs,
   };
 }
