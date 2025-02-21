@@ -17,9 +17,12 @@ import { useForm } from "react-hook-form";
 import { createLog } from "@/http/create-log";
 import { useToast } from "@/hooks/use-toast";
 import { useRef } from "react";
+import { DatePicker } from "./ui/datepicker";
+import { get } from "http";
 
 const createLogSchema = z.object({
-  symptom: z.string().min(1, "Fill out the Symptoms"),
+  symptom: z.string().min(1, "Fill out the Symptom"),
+  date: z.date(),
   mood: z.number().min(1).max(10),
   anxietyLevel: z.number().min(1).max(10),
   sleepHours: z.number().min(1).max(10),
@@ -38,12 +41,14 @@ export const CreateLog = ({ refreshLogs }: { refreshLogs: () => void }) => {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors },
     reset,
   } = useForm<CreateLogProps>({
     resolver: zodResolver(createLogSchema),
     defaultValues: {
       symptom: "",
+      date: new Date(),
       mood: 5,
       anxietyLevel: 5,
       sleepHours: 5,
@@ -62,8 +67,6 @@ export const CreateLog = ({ refreshLogs }: { refreshLogs: () => void }) => {
     });
 
     await refreshLogs();
-
-    reset();
     dialogCloseRef.current?.click();
   }
 
@@ -85,19 +88,35 @@ export const CreateLog = ({ refreshLogs }: { refreshLogs: () => void }) => {
       <Separator />
       <form onSubmit={handleSubmit(handleCreateLog)}>
         <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-4">
-            <Label htmlFor="title">Symptom</Label>
-            <div className="flex flex-col gap-1">
-              <Input
-                id="title"
-                placeholder="Headache"
-                {...register("symptom")}
-              />
-              {errors.symptom && (
-                <span className="text-red-700 text-xs">
-                  {errors.symptom.message}
-                </span>
-              )}
+          <div className="grid grid-cols-2 gap-8">
+            <div className="flex flex-col gap-4">
+              <Label htmlFor="title">Symptom</Label>
+              <div className="flex flex-col gap-1">
+                <Input
+                  id="title"
+                  placeholder="Headache"
+                  {...register("symptom")}
+                />
+                {errors.symptom && (
+                  <span className="text-red-700 text-xs">
+                    {errors.symptom.message}
+                  </span>
+                )}
+              </div>
+            </div>
+            <div className="flex flex-col gap-4">
+              <Label htmlFor="title">Date</Label>
+              <div className="flex flex-col gap-1">
+                <DatePicker
+                  onChange={(date: Date) => setValue("date", date)}
+                  value={watch("date")}
+                />
+                {errors.date && (
+                  <span className="text-red-700 text-xs">
+                    {errors.date.message}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-8">

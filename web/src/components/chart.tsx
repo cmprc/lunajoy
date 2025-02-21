@@ -17,7 +17,7 @@ const chartConfig = {
 
 interface Log {
   date: string;
-  averageScore: number;
+  averageScore: string;
 }
 
 interface ChartProps {
@@ -27,7 +27,7 @@ interface ChartProps {
 export function ChartComponent({ logs }: ChartProps) {
   const dataSet = logs.map((log) => ({
     date: new Date(log.date).toLocaleDateString("en-US", { weekday: "short" }),
-    score: log.averageScore || 50,
+    score: parseFloat(log.averageScore).toFixed(1) || 50,
   }));
 
   return (
