@@ -64,6 +64,17 @@ Users can submit their daily mental health status through a comprehensive form t
 
 ---
 
+## Requirements
+
+- **Node.js:** Version 18 or later  
+- **npm:** Latest stable version  
+- **SQLite:** Latest version (for the backend database)  
+- **Git:** Latest version (for version control)  
+
+Ensure you have these tools installed on your machine before setting up the project.
+
+---
+
 ## Installation
 
 1. **Clone the Repository**
