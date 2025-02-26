@@ -26,11 +26,11 @@ Users can submit their daily mental health status through a comprehensive form t
 
 - **Mood Rating:** Self-reported mood on a scale from very sad to very happy.
 - **Anxiety Levels:** Self-assessed anxiety levels.
-- **Sleep Patterns:** Hours of sleep, quality, and any disturbances.
-- **Physical Activity:** Type and duration of physical activities.
+- **Sleep Patterns:** Hours of sleep.
+- **Physical Activity:** Level of physical activities.
 - **Social Interactions:** Frequency of social engagements.
 - **Stress Levels:** Self-reported stress levels.
-- **Symptoms of Depression or Anxiety:** Presence and severity of specific symptoms.
+- **Symptoms of Depression or Anxiety:** Presence of specific symptoms.
 
 ### Data Visualization
 
@@ -69,24 +69,24 @@ Users can submit their daily mental health status through a comprehensive form t
 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/your-repo/mental-health-tracker.git
-cd mental-health-tracker
+git clone https://github.com/cmprc/lunajoy.git
+cd lunajoy
 ```
 
-2. **Frontend Setup**
+2. **Backend Setup**
 
 ```bash
-cd frontend
+cd server
 npm install
 npm run dev
 ```
 
-3. **Backend Setup**
+3. **Frontend Setup**
 
 ```bash
-cd backend
+cd web
 npm install
-npm start
+npm run dev
 ```
 
 ---
@@ -110,7 +110,7 @@ DATABASE_URL=file:./database.sqlite
 
 1. Sign in with your Google account.
 2. Submit your daily mental health logs using the form, accessed via the Add button.
-3. View real-time charts and totalizers that display your mental health trends from the past week.
+3. View real-time chart and totalizers that display your mental health trends from the past week.
 
 ---
 
