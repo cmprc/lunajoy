@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { getLogs } from "@/http/get-logs";
-import { useWebSocket } from "@/hooks/use-websocket";
 import { Loader } from "@/components/loader";
+import { useWebSocket } from "@/hooks/use-websocket";
+import { getLogs } from "@/http/get-logs";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface Log {
   date: string;

@@ -1,10 +1,8 @@
+import "dotenv/config";
 import { db } from "./index";
 import { dailyLogs, users } from "./schema";
-import "dotenv/config";
 
 async function seed() {
-  console.log("Seeding database");
-
   await db.delete(users);
   await db.delete(dailyLogs);
 
@@ -22,10 +20,11 @@ async function seed() {
       mood: 3,
       anxietyLevel: 2,
       sleepHours: 7,
-      physicalActivity: 30,
-      socialInteractions: 10,
-      stressLevel: 5,
-      symptoms: "Headache",
+      physicalActivity: 8,
+      socialInteractions: 8,
+      stressLevel: 6,
+      symptom: "Headache",
+      score: 44,
     },
   ]);
 }

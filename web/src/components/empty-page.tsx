@@ -5,7 +5,7 @@ import voidIllustration from "../assets/void.svg";
 
 export function EmptyPage() {
   return (
-    <div className="flex flex-col items-center justify-center gap-8 h-[calc(100vh-4rem)] w-full">
+    <div className="flex flex-col items-center justify-center gap-6 h-[calc(100vh-4rem)] w-full">
       <img src={voidIllustration} alt="Empty Page" width={250} />
       <p className="text-zinc-400 max-w-80 text-center leading-snug text-sm">
         It seems you have not created any logs yet.

@@ -1,0 +1,15 @@
+Create log:
+    - Mood: slider
+    - Anxiety: slider
+    - Sleep patterns: 
+        - Hours: slider
+        - Quality: slider
+        - Disturbance: select (y/n)
+    - Activity:
+        - Type: select (soccer/tennis/basketball/volleybal/gym)
+        - Duration: slider
+    - Social Interactions: slider
+    - Stress: slider
+    - Symptoms: 
+        - Presence: select (y/n)
+        - Severity: slider

@@ -1,4 +1,11 @@
+import { useToast } from "@/hooks/use-toast";
+import { createLog } from "@/http/create-log";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRef } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { Button } from "./ui/button";
+import { DatePicker } from "./ui/datepicker";
 import {
   DialogClose,
   DialogContent,
@@ -7,18 +14,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from "./ui/dialog";
-import { Label } from "./ui/label";
 import { Input } from "./ui/input";
-import { Slider } from "./ui/slider";
+import { Label } from "./ui/label";
 import { Separator } from "./ui/separator";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { createLog } from "@/http/create-log";
-import { useToast } from "@/hooks/use-toast";
-import { useRef } from "react";
-import { DatePicker } from "./ui/datepicker";
-import { get } from "http";
+import { Slider } from "./ui/slider";
 
 const createLogSchema = z.object({
   symptom: z.string().min(1, "Fill out the Symptom"),

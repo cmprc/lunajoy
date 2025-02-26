@@ -1,21 +1,26 @@
-import { and, avg, count, eq, lte } from "drizzle-orm";
+import dayjs from "dayjs";
+import { and, avg, count, eq, gte, lte, sql } from "drizzle-orm";
 import { db } from "../db";
 import { dailyLogs } from "../db/schema";
-import dayjs from "dayjs";
 
 export async function getDailyLogs(userId: string) {
-  const lastDayOfWeek = dayjs().endOf("week").toISOString();
+  const today = dayjs().toISOString();
+  const sevenDaysAgo = dayjs().subtract(7, "days").toISOString();
 
-  const logs = db
+  const logs = await db
     .select({
       averageScore: avg(dailyLogs.score),
       date: dailyLogs.date,
     })
     .from(dailyLogs)
     .where(
-      and(eq(dailyLogs.userId, userId), lte(dailyLogs.date, lastDayOfWeek))
+      and(
+        eq(dailyLogs.userId, userId),
+        gte(dailyLogs.date, sevenDaysAgo),
+        lte(dailyLogs.date, today)
+      )
     )
-    .groupBy(dailyLogs.date);
+    .groupBy(sql`DATE(${dailyLogs.date})`);
 
   const stats = await db
     .select({
@@ -24,12 +29,16 @@ export async function getDailyLogs(userId: string) {
     })
     .from(dailyLogs)
     .where(
-      and(eq(dailyLogs.userId, userId), lte(dailyLogs.date, lastDayOfWeek))
+      and(
+        eq(dailyLogs.userId, userId),
+        gte(dailyLogs.date, sevenDaysAgo),
+        lte(dailyLogs.date, today)
+      )
     );
 
   return {
     average: stats[0]?.averageScore || 0,
     total: stats[0]?.logCount || 0,
-    logs: await logs,
+    logs,
   };
 }

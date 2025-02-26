@@ -1,11 +1,6 @@
-import {
-  Brain,
-  BrainCogIcon,
-  Calendar,
-  Logs,
-  LogsIcon,
-  Plus,
-} from "lucide-react";
+import { Brain, BrainCogIcon, Calendar, LogsIcon, Plus } from "lucide-react";
+import { ChartComponent } from "./chart";
+import { PulseUpdate } from "./pulse-update";
 import { Button } from "./ui/button";
 import {
   Card,
@@ -16,8 +11,6 @@ import {
   CardTitle,
 } from "./ui/card";
 import { DialogTrigger } from "./ui/dialog";
-import { ChartComponent } from "./chart";
-import { PulseUpdate } from "./pulse-update";
 
 export function Dashboard({ logs, average, total, isConnected }: any) {
   return (
