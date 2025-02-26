@@ -39,7 +39,7 @@ Users can submit their daily mental health status through a comprehensive form t
 
 ### Interactive UI/UX Design
 
-- Enhanced user interface with modals, tooltips, and notifications for a smooth and guided experience.
+- Enhanced user interface with modals, animations, and notifications for a smooth and guided experience.
 
 ---
 
@@ -69,14 +69,14 @@ Users can submit their daily mental health status through a comprehensive form t
 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/cmprc/lunajoy.git
-cd lunajoy
+git clone https://github.com/your-repo/mental-health-tracker.git
+cd mental-health-tracker
 ```
 
 2. **Frontend Setup**
 
 ```bash
-cd web
+cd frontend
 npm install
 npm run dev
 ```
@@ -84,23 +84,24 @@ npm run dev
 3. **Backend Setup**
 
 ```bash
-cd server
+cd backend
 npm install
-npm run dev
+npm start
 ```
 
 ---
 
 ## Configuration
 
-- Environment variables such as API keys and database connections are defined in `.env` files for both the frontend and backend.
-- Ensure proper configuration of Google OAuth credentials for authentication.
+- Environment variables such as API keys and database connections are defined in `.env` file on the backend.
+- Ensure proper configuration of Google OAuth credentials for authentication and all other keys.
 
 Example `.env` for backend:
+
 ```env
-GOOGLE_CLIENT_ID=your-client-id
-GOOGLE_CLIENT_SECRET=your-client-secret
-DATABASE_URL=sqlite://data/mental-health.db
+GOOGLE_CLIENT_ID=client-id-key
+GOOGLE_CLIENT_SECRET=client-secret-key
+DATABASE_URL=file:./database.sqlite
 ```
 
 ---
